@@ -1,0 +1,22 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+/* Hero Section */
+header {
+    background: url('../img/hero-bg.jpg') no-repeat center center/cover;
+    height: 70vh;
+    color: white;
+}
+
+/* Features Section */
+section {
+    margin-top: 20px;
+}
+
+/* Footer */
+footer {
+    margin-top: 20px;
+    font-size: 14px;
+}

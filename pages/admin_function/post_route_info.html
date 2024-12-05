@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Route Info</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7f6;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: #007bff;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-size: 1.1em;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #d1d1d1 !important;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 800px;
+            margin-top: 50px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Form Card */
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            background-color: #fff;
+        }
+
+        .form-control, .form-select {
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 1.1em;
+            border: 1px solid #ddd;
+            box-shadow: none;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        /* Input Icon */
+        .input-icon {
+            position: relative;
+        }
+
+        .input-icon i {
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            transform: translateY(-50%);
+            color: #bbb;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        /* Submit Button */
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 20px;
+            font-size: 1.2em;
+            font-weight: 600;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Online Portal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/pages/admin_home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Create Route Info</h1>
+        <div class="card">
+            <div class="card-body">
+                <form id="routeForm">
+                    <div class="mb-3 input-icon">
+                        <label for="from" class="form-label">From</label>
+                        <input type="text" id="from" class="form-control" required>
+                        <i class="fas fa-location-arrow"></i>
+                    </div>
+                    <div class="mb-3 input-icon">
+                        <label for="to" class="form-label">To</label>
+                        <input type="text" id="to" class="form-control" required>
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="mb-3 input-icon">
+                        <label for="fare" class="form-label">Fare</label>
+                        <input type="number" id="fare" class="form-control" required>
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <div class="mb-3">
+                        <label for="reservationType" class="form-label">Reservation Type</label>
+                        <select id="reservationType" class="form-select">
+                            <option value="Bus">Bus</option>
+                            <option value="Car">Car</option>
+                            <option value="Airplane">Airplane</option>
+                            <option value="Ship">Ship</option>
+                        </select>
+                    </div>
+                    <div class="mb-3 input-icon" id="pickupPointContainer">
+                        <label for="pickupPoints" class="form-label">Pickup Points</label>
+                        <input type="text" id="pickupPoints" class="form-control" required>
+                        <i class="fas fa-map-pin"></i>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Schedule Route</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Handle form submission and add route to localStorage
+        document.getElementById('routeForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const routeData = {
+                id: Date.now(),  // Generate unique ID based on current timestamp
+                from: document.getElementById('from').value,
+                to: document.getElementById('to').value,
+                fare: document.getElementById('fare').value,
+                reservationType: document.getElementById('reservationType').value,
+                pickupPoints: document.getElementById('pickupPoints').value
+            };
+
+            // Save the route data to localStorage
+            let routes = JSON.parse(localStorage.getItem('routes')) || [];
+            routes.push(routeData);
+            localStorage.setItem('routes', JSON.stringify(routes));
+
+            // Show success message
+            alert('Route added successfully!');
+
+            // Redirect to view_route.html
+            window.location.href = 'view_route.html';
+        });
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Hotel Info</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Update Hotel Info</h1>
+        <div class="card">
+            <div class="card-body">
+                <form id="updateHotelForm">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Hotel Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" id="location" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" id="address" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contact" class="form-label">Contact No</label>
+                        <input type="text" id="contact" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="roomAvailability" class="form-label">Room Availability</label>
+                        <input type="text" id="roomAvailability" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="facility" class="form-label">Facility</label>
+                        <select id="facility" class="form-select">
+                            <option value="AC">AC</option>
+                            <option value="Non-AC">Non-AC</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Update Hotel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load hotel data for updating
+        window.onload = function() {
+            const hotelToUpdate = JSON.parse(localStorage.getItem('hotelToUpdate'));
+
+            if (hotelToUpdate) {
+                document.getElementById('name').value = hotelToUpdate.name;
+                document.getElementById('location').value = hotelToUpdate.location;
+                document.getElementById('address').value = hotelToUpdate.address;
+                document.getElementById('contact').value = hotelToUpdate.contact;
+                document.getElementById('roomAvailability').value = hotelToUpdate.roomAvailability;
+                document.getElementById('facility').value = hotelToUpdate.facility;
+            }
+
+            // Handle form submission and update hotel in localStorage
+            document.getElementById('updateHotelForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const updatedHotel = {
+                    id: hotelToUpdate.id,
+                    name: document.getElementById('name').value,
+                    location: document.getElementById('location').value,
+                    address: document.getElementById('address').value,
+                    contact: document.getElementById('contact').value,
+                    roomAvailability: document.getElementById('roomAvailability').value,
+                    facility: document.getElementById('facility').value
+                };
+
+                let hotels = JSON.parse(localStorage.getItem('hotels')) || [];
+                hotels = hotels.map(hotel => hotel.id === updatedHotel.id ? updatedHotel : hotel);
+                localStorage.setItem('hotels', JSON.stringify(hotels));
+
+                window.location.href = 'view_hotel.html';
+            });
+        };
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
