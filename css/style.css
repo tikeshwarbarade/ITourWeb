@@ -1,22 +1,130 @@
 /* Global Styles */
 body {
     font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Hero Section */
-header {
-    background: url('../img/hero-bg.jpg') no-repeat center center/cover;
-    height: 70vh;
+/* Navbar */
+.navbar {
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #ddd;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5em;
     color: white;
 }
 
-/* Features Section */
-section {
-    margin-top: 20px;
+/* Carousel */
+.carousel-inner img {
+    height: 70vh;
+    object-fit: cover;
+}
+
+/* Buttons */
+.btn {
+    padding: 10px 20px;
+    font-size: 1em;
 }
 
 /* Footer */
 footer {
-    margin-top: 20px;
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
     font-size: 14px;
+}
+
+/* Cards */
+.card {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: white;
+}
+
+.card i {
+    display: block;
+    font-size: 2em;
+    margin-bottom: 5px;
+}
+
+.blue { background-color: #2196f3; }
+.green { background-color: #4caf50; }
+.red { background-color: #f44336; }
+.purple { background-color: #9c27b0; }
+.teal { background-color: #009688; }
+.orange { background-color: #ff9800; }
+.pink { background-color: #e91e63; }
+.brown { background-color: #795548; }
+
+/* Admin Login Page */
+#adminLoginForm {
+    max-width: 400px;
+    margin: auto;
+}
+
+#adminLoginForm .btn {
+    margin-top: 15px;
+}
+
+/* Login Pages (User and Admin) */
+body {
+    background-color: #f4f7f6;
+}
+
+.login-container,
+.register-container {
+    max-width: 600px;
+    margin: 50px auto;
+}
+
+.login-container h1,
+.register-container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-container form .form-group,
+.register-container form .form-group {
+    margin-bottom: 20px;
+}
+
+.login-container form .btn,
+.register-container form .btn {
+    width: 100%;
+}
+
+/* Profile Page */
+.content {
+    margin-top: 70px;
+    padding: 20px;
+}
+
+.card {
+    padding: 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.btn {
+    width: 100%;
+}
+
+/* User Home Page */
+.content {
+    margin-top: 70px;
+    padding: 20px;
 }
