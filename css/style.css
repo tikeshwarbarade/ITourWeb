@@ -4,18 +4,27 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #f8f9fa;
 }
 
 /* Navbar */
 .navbar {
-    background-color: #f4f4f4;
-    border-bottom: 1px solid #ddd;
+    background-color: #343a40;
+    border-radius: 5px;
 }
 
-.navbar-brand {
+.navbar .navbar-brand {
+    color: #ffffff;
     font-weight: bold;
-    font-size: 1.5em;
-    color: white;
+}
+
+.navbar .navbar-nav .nav-link {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.navbar .navbar-nav .nav-link:hover {
+    color: #ff8c00;
 }
 
 /* Carousel */
@@ -28,6 +37,47 @@ body {
 .btn {
     padding: 10px 20px;
     font-size: 1em;
+    width: 100%;
+}
+
+/* Cards */
+.card {
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card i {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+/* Card Color Classes */
+.card.blue { background-color: #007bff; }
+.card.green { background-color: #28a745; }
+.card.red { background-color: #dc3545; }
+.card.purple { background-color: #6f42c1; }
+.card.teal { background-color: #20c997; }
+.card.orange { background-color: #fd7e14; }
+
+/* Content container */
+.content {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.content .container {
+    max-width: 1200px;
 }
 
 /* Footer */
@@ -38,48 +88,7 @@ footer {
     font-size: 14px;
 }
 
-/* Cards */
-.card {
-    height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-size: 1.1em;
-    font-weight: bold;
-    color: white;
-}
-
-.card i {
-    display: block;
-    font-size: 2em;
-    margin-bottom: 5px;
-}
-
-.blue { background-color: #2196f3; }
-.green { background-color: #4caf50; }
-.red { background-color: #f44336; }
-.purple { background-color: #9c27b0; }
-.teal { background-color: #009688; }
-.orange { background-color: #ff9800; }
-.pink { background-color: #e91e63; }
-.brown { background-color: #795548; }
-
-/* Admin Login Page */
-#adminLoginForm {
-    max-width: 400px;
-    margin: auto;
-}
-
-#adminLoginForm .btn {
-    margin-top: 15px;
-}
-
-/* Login Pages (User and Admin) */
-body {
-    background-color: #f4f7f6;
-}
-
+/* Profile and Login Pages */
 .login-container,
 .register-container {
     max-width: 600px;
@@ -97,34 +106,17 @@ body {
     margin-bottom: 20px;
 }
 
-.login-container form .btn,
-.register-container form .btn {
-    width: 100%;
-}
-
-/* Profile Page */
-.content {
-    margin-top: 70px;
-    padding: 20px;
-}
-
-.card {
-    padding: 20px;
-    font-size: 1.1em;
-    font-weight: bold;
-    color: #333;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.btn {
-    width: 100%;
-}
-
-/* User Home Page */
-.content {
-    margin-top: 70px;
-    padding: 20px;
+/* Responsive Design */
+@media (max-width: 768px) {
+    .card {
+        margin-bottom: 20px;
+    }
+    .row.g-3 {
+        margin-right: 0;
+        margin-left: 0;
+    }
+    .col-md-3 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
 }

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Hotel Info</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin-top: 50px;
+        }
+
+        .navbar {
+            background-color: #007bff;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .nav-link {
+            color: white !important;
+        }
+
+        .nav-link:hover {
+            color: #d1d1d1 !important;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .search-bar {
+            margin-bottom: 20px;
+        }
+
+        #search {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h5 {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .card p {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .btn {
+            border-radius: 5px;
+        }
+
+        .btn-info {
+            background-color: #17a2b8;
+            border: none;
+        }
+
+        .btn-info:hover {
+            background-color: #138496;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-start;
+        }
+
+        /* Cards Layout */
+        #hotel-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: space-between;
+        }
+
+        .card-container {
+            width: 100%;
+            max-width: 350px;
+            flex: 1;
+        }
+
+        @media (max-width: 768px) {
+            .card-container {
+                width: 100%;
+            }
+        }
+
+        .no-records {
+            text-align: center;
+            font-size: 1.2em;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Hotel Booking Portal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/pages/home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="text-center mb-4">View Hotel Info</h1>
+        <input type="text" id="search" class="form-control search-bar" placeholder="Search by Name">
+        <div id="hotel-list" class="mt-4"></div>
+    </div>
+    <script>
+        // Function to load booking details from localStorage
+        function loadBookingDetails() {
+            const hotelToBook = JSON.parse(localStorage.getItem('hotelToBook'));
+
+            if (hotelToBook) {
+                const bookingDetailsDiv = document.getElementById('bookingDetails');
+                bookingDetailsDiv.innerHTML = `
+                    <div class="booking-detail">
+                        <p><strong>Hotel Name:</strong> ${hotelToBook.name}</p>
+                        <p><strong>Location:</strong> ${hotelToBook.location}</p>
+                        <p><strong>Address:</strong> ${hotelToBook.address}</p>
+                        <p><strong>Contact No:</strong> ${hotelToBook.contact}</p>
+                        <p><strong>Room Availability:</strong> ${hotelToBook.roomAvailability}</p>
+                        <p><strong>Facility:</strong> ${hotelToBook.facility}</p>
+                        <p><strong>Booking ID:</strong> ${hotelToBook.id}</p>
+                    </div>
+                `;
+            } else {
+                document.getElementById('bookingDetails').innerHTML = '<p>No booking details found.</p>';
+            }
+        }
+
+        // Load the booking details when the page is loaded
+        window.onload = loadBookingDetails;
+    </script>
+
+    <script>
+        // Function to display hotel data
+        function displayHotelData(filteredData) {
+            const hotelList = document.getElementById('hotel-list');
+            hotelList.innerHTML = ''; // Clear previous content
+
+            if (filteredData.length === 0) {
+                hotelList.innerHTML = '<p class="no-records">No records found</p>';
+                return;
+            }
+
+            filteredData.forEach((hotel) => {
+                const cardContainer = document.createElement('div');
+                cardContainer.classList.add('card-container');
+                const card = document.createElement('div');
+                card.classList.add('card');
+                card.innerHTML = `
+                    <h5>ID: ${hotel.id}</h5>
+                    <p><strong>Name:</strong> ${hotel.name}</p>
+                    <p><strong>Location:</strong> ${hotel.location}</p>
+                    <p><strong>Address:</strong> ${hotel.address}</p>
+                    <p><strong>Contact No:</strong> ${hotel.contact}</p>
+                    <p><strong>Room Availability:</strong> ${hotel.roomAvailability}</p>
+                    <p><strong>Facility:</strong> ${hotel.facility}</p>
+                    <div class="card-actions">
+                        <button onclick="addToBooking(${hotel.id})" class="btn btn-info">Add to Booking</button>
+                    </div>
+                `;
+                cardContainer.appendChild(card);
+                hotelList.appendChild(cardContainer);
+            });
+        }
+
+        // Function to add hotel to booking
+        function addToBooking(id) {
+            const hotels = JSON.parse(localStorage.getItem('hotels')) || [];
+            const hotel = hotels.find(h => h.id === id);
+            if (hotel) {
+                localStorage.setItem('hotelToBook', JSON.stringify(hotel));
+                window.location.href = 'my_booking.html'; // Redirect to booking page
+            }
+        }
+
+        // Display all hotel data on page load
+        window.onload = function() {
+            const hotels = JSON.parse(localStorage.getItem('hotels')) || [];
+            displayHotelData(hotels);
+
+            // Search functionality
+            document.getElementById('search').addEventListener('input', function() {
+                const searchValue = this.value.toLowerCase();
+                const filteredData = hotels.filter((hotel) => {
+                    return hotel.name.toLowerCase().includes(searchValue);
+                });
+                displayHotelData(filteredData);
+            });
+        };
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

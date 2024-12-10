@@ -9,35 +9,92 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Update Profile</h1>
+    <div class="container mt-5">
+        <h1 class="text-center">Update Profile</h1>
         <form id="updateProfileForm">
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label for="username">Username</label>
                 <input type="text" class="form-control" id="username" disabled>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
+                <label for="oldPassword">Old Password</label>
+                <input type="password" class="form-control" id="oldPassword" placeholder="Enter Old Password" required>
+            </div>
+            <div class="form-group mb-3">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email" required>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label for="contact">Contact No</label>
                 <input type="text" class="form-control" id="contact" required>
             </div>
-            <div class="form-group">
-                <label for="password">New Password</label>
-                <input type="password" class="form-control" id="password">
+            <div class="form-group mb-3">
+                <label for="newPassword">New Password</label>
+                <input type="password" class="form-control" id="newPassword" placeholder="Enter New Password">
             </div>
-            <div class="form-group">
-                <label for="confirmPassword">Confirm Password</label>
-                <input type="password" class="form-control" id="confirmPassword">
+            <div class="form-group mb-3">
+                <label for="confirmPassword">Confirm New Password</label>
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm New Password">
             </div>
-            <button type="submit" class="btn btn-primary mt-3">Update Profile</button>
+            <button type="submit" class="btn btn-primary">Update Profile</button>
         </form>
     </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const loggedInUser = localStorage.getItem("loggedInUser");
+
+            if (!loggedInUser) {
+                Swal.fire("Error", "No user is logged in!", "error").then(() => {
+                    window.location.href = "login.html";
+                });
+                return;
+            }
+
+            const user = JSON.parse(localStorage.getItem(loggedInUser));
+            document.getElementById("username").value = user.username;
+            document.getElementById("email").value = user.email;
+            document.getElementById("contact").value = user.contactNo;
+
+            document.getElementById("updateProfileForm").addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                // Get the old password entered by the user
+                const oldPassword = document.getElementById("oldPassword").value;
+                const email = document.getElementById("email").value;
+                const contactNo = document.getElementById("contact").value;
+                const newPassword = document.getElementById("newPassword").value;
+                const confirmPassword = document.getElementById("confirmPassword").value;
+
+                // Check if the old password matches the stored password
+                if (oldPassword !== user.password) {
+                    Swal.fire("Error", "Old password is incorrect!", "error");
+                    return;
+                }
+
+                // Update user details
+                user.email = email;
+                user.contactNo = contactNo;
+
+                // Update the password if a new one is provided
+                if (newPassword) {
+                    if (newPassword !== confirmPassword) {
+                        Swal.fire("Error", "New passwords do not match!", "error");
+                        return;
+                    }
+                    user.password = newPassword;
+                }
+
+                // Save the updated user details in localStorage
+                localStorage.setItem(user.username, JSON.stringify(user));
+
+                Swal.fire("Success", "Profile updated successfully!", "success").then(() => {
+                    window.location.href = "user_home.html";
+                });
+            });
+        });
+    </script>
 </body>
 </html>
