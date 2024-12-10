@@ -1,38 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tour Guide</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Centralized CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h4 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: #2C3E50;
+            padding: 1rem;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .navbar-brand:hover {
+            color: #3498DB;
+            transition: 0.3s;
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 1rem;
+            color: white;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #4CAF50;
+            border-bottom: 2px solid #4CAF50;
+            transition: 0.3s;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Carousel as Hero Section */
+        .carousel-inner {
+            height: 100vh;
+        }
+
+        .carousel-item {
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .carousel-item img {
+            height: 100vh;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content .btn {
+            margin: 10px;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2C3E50;
+            color: white;
+            padding: 20px 0;
+        }
+
+        footer .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+        }
+
+        footer .social-icons a:hover {
+            color: #4CAF50;
+            transition: 0.3s;
+        }
+
+        section {
+            padding: 50px;
+        }
+    </style>
 </head>
+
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">Tour Guide</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <!-- Carousel Section -->
+    <!-- Sliding Background Section -->
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="img/taj-mahal.jpg" class="d-block w-100" alt="Taj Mahal">
+                <img src="img/taj-mahal.jpg" alt="Taj Mahal">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <h1>Welcome to Tour Guide</h1>
+                    <p>Your gateway to exploring the world!</p>
+                    <div class="d-flex justify-content-center">
+                        <a href="pages/admin_login.html" class="btn btn-primary">Admin Login</a>
+                        <a href="pages/login.html" class="btn btn-secondary">User Login</a>
+                        <a href="pages/register.html" class="btn btn-success">Register</a>
+                    </div>
+                </div>
             </div>
+
             <div class="carousel-item">
-                <img src="img/great-wall.jpg" class="d-block w-100" alt="Great Wall of China">
+                <img src="img/great-wall.jpg" alt="Great Wall of China">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <h1>Explore Iconic Destinations</h1>
+                    <p>Embark on a journey of a lifetime.</p>
+                    <div class="d-flex justify-content-center">
+                        <a href="pages/admin_login.html" class="btn btn-primary">Admin Login</a>
+                        <a href="pages/login.html" class="btn btn-secondary">User Login</a>
+                        <a href="pages/register.html" class="btn btn-success">Register</a>
+                    </div>
+                </div>
             </div>
+
             <div class="carousel-item">
-                <img src="img/kerala.jpg" class="d-block w-100" alt="Kerala">
+                <img src="img/kerala.jpg" alt="Kerala">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <h1>Discover Hidden Gems</h1>
+                    <p>Experience the beauty of the world.</p>
+                    <div class="d-flex justify-content-center">
+                        <a href="pages/admin_login.html" class="btn btn-primary">Admin Login</a>
+                        <a href="pages/login.html" class="btn btn-secondary">User Login</a>
+                        <a href="pages/register.html" class="btn btn-success">Register</a>
+                    </div>
+                </div>
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -45,16 +216,31 @@
         </button>
     </div>
 
-    <!-- Login/Register Section -->
-    <div class="container text-center my-5">
-        <h1 class="mb-4">Welcome to Tour Guide</h1>
-        <p class="mb-4">Your gateway to exploring the world!</p>
-        <div class="d-flex justify-content-center gap-3">
-            <a href="pages/admin_login.html" class="btn btn-primary px-4 py-2">Admin Login</a>
-            <a href="pages/login.html" class="btn btn-secondary px-4 py-2">User Login</a>
-            <a href="pages/register.html" class="btn btn-success px-4 py-2">Register</a>
-        </div>
-    </div>
+    <!-- About Section -->
+    <section id="about" style="background-color: #f8f9fa;">
+        <h1>About Us</h1>
+        <p>Welcome to the About section of our website. We are a tour guide service offering amazing travel experiences.</p>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" style="background-color: #e9ecef;">
+        <h1>Our Services</h1>
+        <p>Here are the services we offer to make your journey unforgettable:</p>
+        <ul>
+            <li>Guided Tours</li>
+            <li>Custom Itineraries</li>
+            <li>Hotel Bookings</li>
+            <li>Transportation Services</li>
+        </ul>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="background-color: #dee2e6;">
+        <h1>Contact Us</h1>
+        <p>If you have any questions or want to book a tour, feel free to reach out to us.</p>
+        <p>Email: contact@tourguide.com</p>
+        <p>Phone: 123-456-7890</p>
+    </section>
 
     <!-- Footer -->
     <footer class="bg-dark text-white py-3">
@@ -62,9 +248,15 @@
         <p class="text-center mb-0">Developed by Chetan Chobitkar and Shashank Bagale</p>
     </footer>
 
+        <div class="social-icons">
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-twitter"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+        </div>
+    </footer>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Centralized JS -->
-    <script src="js/script.js"></script>
 </body>
+
 </html>
