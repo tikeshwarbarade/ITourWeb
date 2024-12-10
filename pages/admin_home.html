@@ -4,25 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body style="background-color: #f5f6fa; font-family: Arial, sans-serif;">
+
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg" style="background-color: #007bff; padding: 15px;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Online Portal</a>
+            <a class="navbar-brand" href="#" style="color: #fff; font-weight: bold; font-size: 20px;">Tourism Guide</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon" style="background-color: #fff;"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/pages/admin_home.html">Home</a>
+                        <a class="nav-link" href="/pages/admin_home.html" style="color: #fff; font-size: 16px;">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/index.html">Logout</a>
+                        <a class="nav-link" href="/index.html" style="color: #fff; font-size: 16px;">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -30,86 +32,86 @@
     </nav>
 
     <!-- Content -->
-    <div class="content">
+    <div class="content py-4">
         <div class="container">
-            <h1 class="text-center mb-4">Tourism Guide</h1>
-            <div class="row g-3">
+            <h1 class="text-center mb-4" style="font-size: 28px; color: #333;">Admin Home</h1>
+            <div class="row g-4">
                 <div class="col-md-3">
                     <a href="/pages/admin_function/post_travel_info.html">
-                        <div class="card blue">
-                            <i class="bi bi-file-plus"></i>
+                        <div style="background-color: #1e3a8a; color: #fff; border-radius: 12px; text-align: center; padding: 20px; font-size: 16px; font-weight: bold; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);">
+                            <i class="bi bi-file-plus" style="font-size: 30px; display: block; margin-bottom: 10px;"></i>
                             Add Travel
                         </div>
                     </a>
                 </div>
                 <div class="col-md-3">
                     <a href="/pages/admin_function/view_travel.html">
-                        <div class="card green">
-                            <i class="bi bi-globe"></i>
+                        <div style="background-color: #22c55e; color: #fff; border-radius: 12px; text-align: center; padding: 20px; font-size: 16px; font-weight: bold; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);">
+                            <i class="bi bi-globe" style="font-size: 30px; display: block; margin-bottom: 10px;"></i>
                             View Travel
                         </div>
                     </a>
                 </div>
                 <div class="col-md-3">
                     <a href="/pages/admin_function/post_route_info.html">
-                        <div class="card red">
-                            <i class="bi bi-geo-alt"></i>
+                        <div style="background-color: #f97316; color: #fff; border-radius: 12px; text-align: center; padding: 20px; font-size: 16px; font-weight: bold; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);">
+                            <i class="bi bi-geo-alt" style="font-size: 30px; display: block; margin-bottom: 10px;"></i>
                             Add Route
                         </div>
                     </a>
                 </div>
                 <div class="col-md-3">
                     <a href="/pages/admin_function/view_route.html">
-                        <div class="card teal">
-                            <i class="bi bi-signpost"></i>
+                        <div style="background-color: #84cc16; color: #fff; border-radius: 12px; text-align: center; padding: 20px; font-size: 16px; font-weight: bold; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);">
+                            <i class="bi bi-signpost" style="font-size: 30px; display: block; margin-bottom: 10px;"></i>
                             View Route
                         </div>
                     </a>
                 </div>
                 <div class="col-md-3">
                     <a href="/pages/admin_function/post_hotel_info.html">
-                        <div class="card orange">
-                            <i class="bi bi-building"></i>
+                        <div style="background-color: #f43f5e; color: #fff; border-radius: 12px; text-align: center; padding: 20px; font-size: 16px; font-weight: bold; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);">
+                            <i class="bi bi-building" style="font-size: 30px; display: block; margin-bottom: 10px;"></i>
                             Add Hotel
                         </div>
                     </a>
                 </div>
                 <div class="col-md-3">
                     <a href="/pages/admin_function/view_hotel.html">
-                        <div class="card purple">
-                            <i class="bi bi-house"></i>
+                        <div style="background-color: #3b82f6; color: #fff; border-radius: 12px; text-align: center; padding: 20px; font-size: 16px; font-weight: bold; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);">
+                            <i class="bi bi-house" style="font-size: 30px; display: block; margin-bottom: 10px;"></i>
                             View Hotel
                         </div>
                     </a>
                 </div>
                 <div class="col-md-3">
                     <a href="/pages/admin_function/post_food_info.html">
-                        <div class="card pink">
-                            <i class="bi bi-file-earmark-plus"></i>
+                        <div style="background-color: #06b6d4; color: #fff; border-radius: 12px; text-align: center; padding: 20px; font-size: 16px; font-weight: bold; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);">
+                            <i class="bi bi-file-earmark-plus" style="font-size: 30px; display: block; margin-bottom: 10px;"></i>
                             Add Food
                         </div>
                     </a>
                 </div>
                 <div class="col-md-3">
                     <a href="/pages/admin_function/view_food.html">
-                        <div class="card brown">
-                            <i class="bi bi-file-earmark-text"></i>
+                        <div style="background-color: #a855f7; color: #fff; border-radius: 12px; text-align: center; padding: 20px; font-size: 16px; font-weight: bold; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);">
+                            <i class="bi bi-file-earmark-text" style="font-size: 30px; display: block; margin-bottom: 10px;"></i>
                             View Food
                         </div>
                     </a>
                 </div>
                 <div class="col-md-3">
                     <a href="/pages/admin_function/user_booking_info.html">
-                        <div class="card blue">
-                            <i class="bi bi-journal"></i>
+                        <div style="background-color: #f59e0b; color: #fff; border-radius: 12px; text-align: center; padding: 20px; font-size: 16px; font-weight: bold; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);">
+                            <i class="bi bi-journal" style="font-size: 30px; display: block; margin-bottom: 10px;"></i>
                             User Booking
                         </div>
                     </a>
                 </div>
                 <div class="col-md-3">
                     <a href="/pages/admin_function/admin_update_info.html">
-                        <div class="card green">
-                            <i class="bi bi-person"></i>
+                        <div style="background-color: #6b7280; color: #fff; border-radius: 12px; text-align: center; padding: 20px; font-size: 16px; font-weight: bold; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);">
+                            <i class="bi bi-person" style="font-size: 30px; display: block; margin-bottom: 10px;"></i>
                             My Profile
                         </div>
                     </a>
@@ -120,6 +122,5 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/script.js"></script>
 </body>
 </html>
